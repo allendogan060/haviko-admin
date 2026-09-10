@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d4a3c">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Haviko Admin</title>
+  <link rel="stylesheet" href="./styles.css?v=1">
+  <script src="./access.js?v=1"></script>
+</head>
+<body>
+  <div id="login-screen" class="screen">
+    <div class="login-card">
+      <h1>Haviko Admin</h1>
+      <p class="muted">Interner Zugang. Nicht für Restaurant-Konten.</p>
+      <form id="login-form">
+        <label class="field">
+          <span>E-Mail</span>
+          <input id="login-email" type="email" autocomplete="username" required>
+        </label>
+        <label class="field">
+          <span>Passwort</span>
+          <input id="login-password" type="password" autocomplete="current-password" required>
+        </label>
+        <p class="form-error hidden" id="login-error" role="alert"></p>
+        <button class="primary full" type="submit">Anmelden</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="app-screen" class="screen hidden">
+    <header class="topbar">
+      <div class="brand">Haviko <span>Admin</span></div>
+      <nav class="tab-nav">
+        <button class="tab-button active" data-tab="restaurants">Restaurants</button>
+        <button class="tab-button" data-tab="submissions">Einreichungen</button>
+        <button class="tab-button" data-tab="appeals">Widersprüche</button>
+        <button class="tab-button" data-tab="reports">Meldungen</button>
+      </nav>
+      <div class="topbar-actions">
+        <span id="admin-email" class="muted"></span>
+        <button id="signout-button" class="secondary small">Abmelden</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <div id="list-view">
+        <div class="toolbar">
+          <input id="search-input" type="search" placeholder="Suche nach Name, Kennung, E-Mail …">
+          <select id="status-filter">
+            <option value="">Alle Status</option>
+            <option value="needs_review">Prüfung nötig</option>
+            <option value="activated">Freigeschaltet</option>
+            <option value="suspended">Gesperrt</option>
+            <option value="deleted">Gelöscht</option>
+          </select>
+          <button id="refresh-button" class="secondary small">Aktualisieren</button>
+        </div>
+        <div id="list-error" class="form-error hidden"></div>
+        <div id="restaurant-list" class="restaurant-list"></div>
+      </div>
+
+      <div id="detail-view" class="hidden">
+        <button id="back-button" class="secondary small">&larr; Zur Liste</button>
+        <div id="detail-content"></div>
+      </div>
+
+      <div id="appeals-view" class="hidden">
+        <div class="toolbar">
+          <button id="appeals-refresh-button" class="secondary small">Aktualisieren</button>
+        </div>
+        <div id="appeals-error" class="form-error hidden"></div>
+        <div id="appeals-list"></div>
+      </div>
+
+      <div id="submissions-view" class="hidden">
+        <div class="toolbar">
+          <button id="submissions-refresh-button" class="secondary small">Aktualisieren</button>
+        </div>
+        <div id="submissions-error" class="form-error hidden"></div>
+        <div id="submissions-list"></div>
+      </div>
+
+      <div id="reports-view" class="hidden">
+        <div class="toolbar">
+          <button id="reports-refresh-button" class="secondary small">Aktualisieren</button>
+        </div>
+        <div id="reports-error" class="form-error hidden"></div>
+        <div id="reports-list"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="./app.js?v=1"></script>
+</body>
+</html>
